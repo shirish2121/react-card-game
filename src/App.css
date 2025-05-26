@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.game-container {
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.status-bar {
+  margin-bottom: 1rem;
+}
+
+.table-layout {
+  display: grid;
+  grid-template-areas:
+    "top-left    top     top-right"
+    "left   trick   right"
+    ".      bottom  .";
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0.05);
+  outline: 2px dashed red;
+}
+
+.bot-top {
+  grid-area: top;
+}
+
+.bot-left {
+  grid-area: left;
+}
+
+.bot-right {
+  grid-area: right;
+}
+
+.player-bottom {
+  grid-area: bottom;
+}
+
+/* Trick Area Layout */
+.trick-area {
+  grid-area: trick;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "trump-display  top     round-score-opponent"
+    "left           center  right"
+    "round-score-myteam   bottom  spare";
+  justify-items: center;
+  align-items: center;
+
+  width: 80vw;
+  max-width: 400px;
+  height: 80vw;       /* ✅ Force height */
+  max-height: 400px;
+  min-height: 250px;  /* ✅ Prevent shrinking below minimum */
+  margin: 0 auto;
+
+  background-color: var(--trick-bg);
+  border: 2px dashed var(--trick-border);
+  border-radius: 10px;
+  /* padding: 0.5rem; */
+  position: relative;
+  overflow: hidden;
+}
+
+.trick-card {
+  position: absolute;
+  width: 60px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.trick-card.player-0 {
+  grid-area: bottom;
+}
+
+.trick-card.player-1 {
+  grid-area: left;
+}
+
+.trick-card.player-2 {
+  grid-area: top;
+}
+
+.trick-card.player-3 {
+  grid-area: right;
+}
+
+.hand-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.player-label {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.trump-display         { grid-area: trump-display; text-align: left; font-size:2rem; }
+.round-score-opponent  { grid-area: round-score-opponent; text-align: right; }
+.round-score-myteam    { grid-area: round-score-myteam; text-align: left; }
+
+.trump-display,
+.round-score-opponent,
+.round-score-myteam {
+  height: 3rem;       /* or whatever */
+  overflow: hidden;   /* hides any extra */
+}
+
+.bot-top,
+.bot-left,
+.bot-right {
+  pointer-events: none; /* so clicks go “through” to the trick area */
+}
+
+.bot-top .card,
+.bot-left .card,
+.bot-right .card {
+  width: 40px;     /* smaller facedown backs */
+  height: 60px;
+  border-radius: 4px;
+  /* maybe a little opacity so you can see overlap */
+  opacity: 0.75;
+}

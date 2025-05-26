@@ -1,0 +1,10 @@
+.bot-hand-fan {
+  position: relative;
+  pointer-events: none;  /* so you can’t click these backs */
+}
+
+.bot-hand-card {
+  position: absolute;
+  width: 40px;
+  height: 60px;
+}

@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 12vw;
+  max-width: 50px;
+  max-height: 80px;
+  margin: 0.3rem;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 2px solid #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-align: center;
+  user-select: none;
+}
+
+.card.red {
+  color: crimson;
+}
+
+.card.black {
+  color: black;
+}
+
+.card.back {
+  background: repeating-linear-gradient(
+    45deg,
+    #bbb,
+    #bbb 4px,
+    #eee 4px,
+    #eee 8px
+  );
+  color: transparent;
+  border: 2px solid #666;
+}
+
+/* Responsive tweak for very small screens */
+@media (max-width: 480px) {
+  .card {
+    width: 12vw;
+    height: 17vw;
+    font-size: 1.1rem;
+  }
+}
